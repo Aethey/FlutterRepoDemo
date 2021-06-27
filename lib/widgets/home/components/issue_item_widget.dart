@@ -41,12 +41,18 @@ class IssueItemWidget extends StatelessWidget {
                       color: Colors.green,
                     ),
                   ),
-                  Text(
-                    '${issueEntity.title}',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5!
-                        .copyWith(fontWeight: FontWeight.bold),
+                  Container(
+                    width: size.width - 160,
+                    child: Text(
+                      '${issueEntity.title}',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline5!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
                   )
                 ],
               ),

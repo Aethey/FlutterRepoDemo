@@ -11,8 +11,21 @@ class GitRepoResponsibility {
 
   GitRepoResponsibility._internal();
 
-  Future<List<IssueEntity>> fetchIssue() async {
-    var response = await DioManager().get('/issues');
+  Future<List<IssueEntity>> fetchIssue(
+      {required int page,
+      required String sort,
+      required String direction,
+      required String since}) async {
+    Map<String, dynamic> params = Map();
+    params['page'] = page;
+    params['per_page'] = 30;
+    params['sort'] = sort;
+    params['direction'] = direction;
+    if (since != '') {
+      params['since'] = since;
+    }
+
+    var response = await DioManager().get('/issues', params: params);
     List<IssueEntity> list = JsonConvert.fromJsonAsT(response);
     return list;
   }

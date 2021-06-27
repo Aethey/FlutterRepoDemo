@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_git_repo_demo/states/provider/all_issues_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'components/issue_item_widget.dart';
+import 'components/lists/all_issues_list.dart';
 import 'components/modal_list.dart';
+
+final issueStateProvider = StateProvider((ref) => ['all']);
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,6 +37,17 @@ class HomeScreen extends StatelessWidget {
                 ],
                 isScrollable: true,
               ),
+              actions: [
+                IconButton(
+                  icon: Icon(
+                    Icons.tag,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    showModal(context);
+                  },
+                ),
+              ],
             ),
             body: SafeArea(
               child: Padding(
@@ -40,128 +57,16 @@ class HomeScreen extends StatelessWidget {
                     Expanded(
                       child: TabBarView(
                         children: [
-                          ListView.builder(
-                            itemBuilder: (context, index) {
-                              return Container(
-                                margin: EdgeInsets.symmetric(vertical: 8.0),
-                                child: Card(
-                                  shadowColor: Colors.black,
-                                  child: Container(
-                                    margin: EdgeInsets.all(16.0),
-                                    child: Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              bottom: 16.0),
-                                          child: Row(
-                                            children: [
-                                              Text('No.54062',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline6),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 16.0, right: 8.0),
-                                                child: Icon(
-                                                    Icons.message_outlined),
-                                              ),
-                                              Text('2'),
-                                            ],
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 4.0, right: 16.0),
-                                              child: Icon(
-                                                Icons.new_releases,
-                                                color: Colors.green,
-                                              ),
-                                            ),
-                                            Text(
-                                              'stable',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline5!
-                                                  .copyWith(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                            )
-                                          ],
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              color:
-                                                  Colors.blue.withOpacity(0.5),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(8.0))),
-                                          width: size.width,
-                                          padding: EdgeInsets.all(16.0),
-                                          margin: EdgeInsets.symmetric(
-                                              vertical: 8.0),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text('##Description'),
-                                              SizedBox(
-                                                height: 16,
-                                              ),
-                                              Text(
-                                                'this is a test description,this is a test descriptionthis is a test descriptionthis is a test descriptionthis is a test descriptionthis is a test descriptionthis is a test descriptionthis is a test description',
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 8.0,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              '2020 04 06',
-                                              textAlign: TextAlign.start,
-                                            ),
-                                            Container(
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        width: 1.0,
-                                                        color: Colors.grey),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0)),
-                                                padding: EdgeInsets.only(
-                                                    top: 16,
-                                                    bottom: 16.0,
-                                                    left: 8.0,
-                                                    right: 8.0),
-                                                child: Text(
-                                                  'View full issue',
-                                                  style: TextStyle(
-                                                      fontSize: 12.0,
-                                                      color: Colors.black),
-                                                ))
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                            itemCount: 5,
+                          AllIssuesList(
+                            pageStorageKey: 'all',
                           ),
                           Icon(Icons.directions_transit),
                           Icon(Icons.directions_bike),
                           Icon(Icons.directions_bike),
                           Icon(Icons.directions_bike),
-                          Icon(Icons.directions_bike),
+                          AllIssuesList(
+                            pageStorageKey: 'key2',
+                          ),
                         ],
                       ),
                     )
@@ -200,5 +105,4 @@ class HomeScreen extends StatelessWidget {
           );
         });
   }
-
 }
