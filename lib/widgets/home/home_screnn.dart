@@ -27,7 +27,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return DefaultTabController(
       length: 6,
       child: Builder(
@@ -43,25 +42,25 @@ class HomeScreen extends StatelessWidget {
                   Tab(
                     text: '全て',
                   ),
-                  Tab(text: 'p: webview'),
+                  Tab(text: 'p: share'),
                   Tab(text: 'p: shared_preferences'),
                   Tab(text: 'waiting for customer response'),
                   Tab(text: 'severe: new feature'),
-                  Tab(text: 'p: share'),
+                  Tab(text: 'p: webview'),
                 ],
                 isScrollable: true,
               ),
-              actions: [
-                IconButton(
-                  icon: Icon(
-                    Icons.tag,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    // showModal(context);
-                  },
-                ),
-              ],
+              // actions: [
+              //   IconButton(
+              //     icon: Icon(
+              //       Icons.tag,
+              //       color: Colors.black,
+              //     ),
+              //     onPressed: () {
+              //       // showModal(context);
+              //     },
+              //   ),
+              // ],
             ),
             body: SafeArea(
               child: Padding(
@@ -134,13 +133,32 @@ class HomeScreen extends StatelessWidget {
                 direction = IssueSortDirection.descending.value;
               }
               switch (currentPage) {
+                // (2) 基本機能に対する問題点、もしくは改善点を1つ上げ、それを修正してください。
+                // 一つのListで、指定のLabelを選択して、対応の dataListを表示します、この場合で、他のstate管理と画面を作るのは必要が無いです。
+                // そして、他のlabelの追加が簡単になります。
                 case 0:
-                  context.read(allIssuesProvider.notifier).refresh(
-                      since: since,
-                      sort: sort,
-                      state: state,
-                      direction: direction);
+                  if (context.read(issueLabelsProvider).state.isNotEmpty) {
+                    String labelsStr =
+                        context.read(issueLabelsProvider).state.join(',');
+                    context.read(allIssuesProvider.notifier).refresh(
+                        labels: labelsStr,
+                        since: since,
+                        sort: sort,
+                        state: state,
+                        direction: direction);
+                  } else {
+                    context.read(allIssuesProvider.notifier).refresh(
+                        labels: '',
+                        since: since,
+                        sort: sort,
+                        state: state,
+                        direction: direction);
+                  }
+
                   break;
+                // (1) 後述する基本機能を実装
+                // 全てのTab画面の実装が必要、そして、それぞれの画面のListの管理（scroll，loadMore，refresh）別々ので、対応の処理ClassとState管理が必要です。
+                // もしtabViewの外から、Stateを一緒に管理すると、labelと対応のtabViewが、追加と削除可能、ですが、更新する時、上からしたの子Widgetが全部更新されます
                 case 1:
                   context.read(shareIssuesProvider.notifier).refresh(
                       since: since,

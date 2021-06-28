@@ -39,9 +39,9 @@ class _SpIssuesListState extends State<SpIssuesList> {
 
         if (issues == null) {
           if (isLoading == false) {
-            return MyLoadingWidget();
+            return MyNoneWidget();
           }
-          return MyNoneWidget();
+          return MyLoadingWidget();
         }
 
         return RefreshIndicator(

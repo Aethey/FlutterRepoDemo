@@ -39,9 +39,9 @@ class _WebViewIssuesListState extends State<WebViewIssuesList> {
 
         if (issues == null) {
           if (isLoading == false) {
-            return MyLoadingWidget();
+            return MyNoneWidget();
           }
-          return MyNoneWidget();
+          return MyLoadingWidget();
         }
 
         return RefreshIndicator(

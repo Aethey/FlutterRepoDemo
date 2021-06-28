@@ -39,9 +39,9 @@ class _WaitingIssuesListState extends State<WaitingIssuesList> {
 
         if (issues == null) {
           if (isLoading == false) {
-            return MyLoadingWidget();
+            return MyNoneWidget();
           }
-          return MyNoneWidget();
+          return MyLoadingWidget();
         }
 
         return RefreshIndicator(
