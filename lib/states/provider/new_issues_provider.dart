@@ -1,31 +1,32 @@
 import 'package:flutter_git_repo_demo/api/responsibility/git_repo_respinsibility.dart';
 import 'package:flutter_git_repo_demo/states/freezed/all_issues_state.dart';
+import 'package:flutter_git_repo_demo/states/freezed/new_issues_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final allIssuesProvider =
-    StateNotifierProvider<AllIssuesNotifier, AllIssuesState>((ref) {
-  return AllIssuesNotifier();
+final newIssuesProvider =
+StateNotifierProvider<NewIssuesNotifier, NewIssuesState>((ref) {
+  return NewIssuesNotifier();
 });
 
 /// manage image list state
-class AllIssuesNotifier extends StateNotifier<AllIssuesState> {
-  AllIssuesNotifier() : super(AllIssuesState()) {
+class NewIssuesNotifier extends StateNotifier<NewIssuesState> {
+  NewIssuesNotifier() : super(NewIssuesState()) {
     _initList();
   }
 
   void _initList(
       {int? initPage,
-      String? initSort,
-      String? initDirection,
-      String? initState,
-      String? initLabels,
-      String? initSince}) async {
+        String? initSort,
+        String? initDirection,
+        String? initState,
+        String? initLabels,
+        String? initSince}) async {
     final page = initPage ?? state.page;
     final sort = initSort ?? state.sort;
     final direction = initDirection ?? state.direction;
     final _state = initState ?? state.state;
     final since = initSince ?? state.since;
-    final labels = initLabels ?? state.labels;
+    final labels = 'severe: new feature';
     final issues = await GitRepoResponsibility().fetchIssue(
         page: page,
         sort: sort,

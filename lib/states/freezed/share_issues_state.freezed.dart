@@ -22,6 +22,8 @@ class _$ShareIssuesStateTearOff {
       String sort = 'created',
       String direction = 'desc',
       String since = '',
+      String state = 'open',
+      String labels = '',
       bool isLoading = true,
       bool isLoadMoreError = false,
       bool isLoadMoreDone = false,
@@ -32,6 +34,8 @@ class _$ShareIssuesStateTearOff {
       sort: sort,
       direction: direction,
       since: since,
+      state: state,
+      labels: labels,
       isLoading: isLoading,
       isLoadMoreError: isLoadMoreError,
       isLoadMoreDone: isLoadMoreDone,
@@ -50,6 +54,8 @@ mixin _$ShareIssuesState {
   String get sort => throw _privateConstructorUsedError;
   String get direction => throw _privateConstructorUsedError;
   String get since => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
+  String get labels => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isLoadMoreError => throw _privateConstructorUsedError;
   bool get isLoadMoreDone => throw _privateConstructorUsedError;
@@ -71,6 +77,8 @@ abstract class $ShareIssuesStateCopyWith<$Res> {
       String sort,
       String direction,
       String since,
+      String state,
+      String labels,
       bool isLoading,
       bool isLoadMoreError,
       bool isLoadMoreDone,
@@ -93,6 +101,8 @@ class _$ShareIssuesStateCopyWithImpl<$Res>
     Object? sort = freezed,
     Object? direction = freezed,
     Object? since = freezed,
+    Object? state = freezed,
+    Object? labels = freezed,
     Object? isLoading = freezed,
     Object? isLoadMoreError = freezed,
     Object? isLoadMoreDone = freezed,
@@ -118,6 +128,14 @@ class _$ShareIssuesStateCopyWithImpl<$Res>
       since: since == freezed
           ? _value.since
           : since // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      labels: labels == freezed
+          ? _value.labels
+          : labels // ignore: cast_nullable_to_non_nullable
               as String,
       isLoading: isLoading == freezed
           ? _value.isLoading
@@ -152,6 +170,8 @@ abstract class _$ShareIssuesStateCopyWith<$Res>
       String sort,
       String direction,
       String since,
+      String state,
+      String labels,
       bool isLoading,
       bool isLoadMoreError,
       bool isLoadMoreDone,
@@ -176,6 +196,8 @@ class __$ShareIssuesStateCopyWithImpl<$Res>
     Object? sort = freezed,
     Object? direction = freezed,
     Object? since = freezed,
+    Object? state = freezed,
+    Object? labels = freezed,
     Object? isLoading = freezed,
     Object? isLoadMoreError = freezed,
     Object? isLoadMoreDone = freezed,
@@ -201,6 +223,14 @@ class __$ShareIssuesStateCopyWithImpl<$Res>
       since: since == freezed
           ? _value.since
           : since // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      labels: labels == freezed
+          ? _value.labels
+          : labels // ignore: cast_nullable_to_non_nullable
               as String,
       isLoading: isLoading == freezed
           ? _value.isLoading
@@ -231,6 +261,8 @@ class _$_ShareIssuesState extends _ShareIssuesState {
       this.sort = 'created',
       this.direction = 'desc',
       this.since = '',
+      this.state = 'open',
+      this.labels = '',
       this.isLoading = true,
       this.isLoadMoreError = false,
       this.isLoadMoreDone = false,
@@ -252,6 +284,12 @@ class _$_ShareIssuesState extends _ShareIssuesState {
   @JsonKey(defaultValue: '')
   @override
   final String since;
+  @JsonKey(defaultValue: 'open')
+  @override
+  final String state;
+  @JsonKey(defaultValue: '')
+  @override
+  final String labels;
   @JsonKey(defaultValue: true)
   @override
   final bool isLoading;
@@ -266,7 +304,7 @@ class _$_ShareIssuesState extends _ShareIssuesState {
 
   @override
   String toString() {
-    return 'ShareIssuesState(page: $page, per_page: $per_page, sort: $sort, direction: $direction, since: $since, isLoading: $isLoading, isLoadMoreError: $isLoadMoreError, isLoadMoreDone: $isLoadMoreDone, issues: $issues)';
+    return 'ShareIssuesState(page: $page, per_page: $per_page, sort: $sort, direction: $direction, since: $since, state: $state, labels: $labels, isLoading: $isLoading, isLoadMoreError: $isLoadMoreError, isLoadMoreDone: $isLoadMoreDone, issues: $issues)';
   }
 
   @override
@@ -285,6 +323,10 @@ class _$_ShareIssuesState extends _ShareIssuesState {
                     .equals(other.direction, direction)) &&
             (identical(other.since, since) ||
                 const DeepCollectionEquality().equals(other.since, since)) &&
+            (identical(other.state, state) ||
+                const DeepCollectionEquality().equals(other.state, state)) &&
+            (identical(other.labels, labels) ||
+                const DeepCollectionEquality().equals(other.labels, labels)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)) &&
@@ -306,6 +348,8 @@ class _$_ShareIssuesState extends _ShareIssuesState {
       const DeepCollectionEquality().hash(sort) ^
       const DeepCollectionEquality().hash(direction) ^
       const DeepCollectionEquality().hash(since) ^
+      const DeepCollectionEquality().hash(state) ^
+      const DeepCollectionEquality().hash(labels) ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(isLoadMoreError) ^
       const DeepCollectionEquality().hash(isLoadMoreDone) ^
@@ -324,6 +368,8 @@ abstract class _ShareIssuesState extends ShareIssuesState {
       String sort,
       String direction,
       String since,
+      String state,
+      String labels,
       bool isLoading,
       bool isLoadMoreError,
       bool isLoadMoreDone,
@@ -340,6 +386,10 @@ abstract class _ShareIssuesState extends ShareIssuesState {
   String get direction => throw _privateConstructorUsedError;
   @override
   String get since => throw _privateConstructorUsedError;
+  @override
+  String get state => throw _privateConstructorUsedError;
+  @override
+  String get labels => throw _privateConstructorUsedError;
   @override
   bool get isLoading => throw _privateConstructorUsedError;
   @override

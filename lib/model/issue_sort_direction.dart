@@ -4,9 +4,9 @@ extension IssueSortDirectionValue on IssueSortDirection {
   String get value {
     switch (this) {
       case IssueSortDirection.ascending:
-        return 'ascending';
+        return 'asc';
       case IssueSortDirection.descending:
-        return 'ascending';
+        return 'desc';
     }
   }
 }

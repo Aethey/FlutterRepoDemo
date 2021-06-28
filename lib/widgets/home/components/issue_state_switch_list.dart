@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_git_repo_demo/model/issue_state.dart';
+import 'package:flutter_git_repo_demo/states/provider/all_issues_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final issueStateProvider = StateProvider((ref) => IssueState.all);

@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_git_repo_demo/states/provider/all_issues_provider.dart';
+import 'package:flutter_git_repo_demo/states/provider/webview_issues_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../issue_item_widget.dart';
 import '../my_loading_widget.dart';
 import '../my_none_widget.dart';
 
-class AllIssuesList extends StatefulWidget {
-  const AllIssuesList({Key? key, required this.pageStorageKey})
+class WebViewIssuesList extends StatefulWidget {
+  const WebViewIssuesList({Key? key, required this.pageStorageKey})
       : super(key: key);
   final String pageStorageKey;
 
   @override
-  State<StatefulWidget> createState() => _AllIssuesListState();
+  State<StatefulWidget> createState() => _WebViewIssuesListState();
 }
 
-class _AllIssuesListState extends State<AllIssuesList> {
+class _WebViewIssuesListState extends State<WebViewIssuesList> {
   static late ScrollController _scrollController;
   bool isScrollingDown = false;
   int oldLength = 0;
@@ -32,10 +32,10 @@ class _AllIssuesListState extends State<AllIssuesList> {
     return Consumer(
       builder: (BuildContext context,
           T Function<T>(ProviderBase<Object?, T>) watch, Widget? child) {
-        final isLoadMoreError = watch(allIssuesProvider).isLoadMoreError;
-        final isLoadMoreDone = watch(allIssuesProvider).isLoadMoreDone;
-        final isLoading = watch(allIssuesProvider).isLoading;
-        final issues = watch(allIssuesProvider).issues;
+        final isLoadMoreError = watch(webViewIssuesProvider).isLoadMoreError;
+        final isLoadMoreDone = watch(webViewIssuesProvider).isLoadMoreDone;
+        final isLoading = watch(webViewIssuesProvider).isLoading;
+        final issues = watch(webViewIssuesProvider).issues;
 
         if (issues == null) {
           if (isLoading == false) {
@@ -81,7 +81,8 @@ class _AllIssuesListState extends State<AllIssuesList> {
             },
             itemCount: issues.length + 1,
           ),
-          onRefresh: () => context.read(allIssuesProvider.notifier).refresh(),
+          onRefresh: () =>
+              context.read(webViewIssuesProvider.notifier).refresh(),
         );
       },
     );
@@ -98,7 +99,7 @@ class _AllIssuesListState extends State<AllIssuesList> {
       _scrollController.position.isScrollingNotifier.addListener(() {
         // stop
         if (currentScroll > maxScroll &&
-            !context.read(allIssuesProvider).isLoading &&
+            !context.read(webViewIssuesProvider).isLoading &&
             _scrollController.position.extentAfter == 0) {
           WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
             _scrollController.addListener(() {
@@ -110,9 +111,9 @@ class _AllIssuesListState extends State<AllIssuesList> {
                 /// if listview scroll stop and scroll distance > maxScroll
                 // stop
                 if (currentScroll > maxScroll &&
-                    !context.read(allIssuesProvider).isLoading &&
+                    !context.read(webViewIssuesProvider).isLoading &&
                     _scrollController.position.extentAfter == 0) {
-                  context.read(allIssuesProvider.notifier).loadMore();
+                  context.read(webViewIssuesProvider.notifier).loadMore();
                 }
               } else {
                 // start

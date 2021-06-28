@@ -18,7 +18,8 @@ extension IssueStateValue on IssueState {
       case IssueState.sinceLastYear:
         DateTime now = new DateTime.now();
         DateTime since = new DateTime(now.year - 1, now.month, now.day);
-        return DateFormat(Config.dateFormat).format(since);
+
+        return since.toIso8601String();
 
       case IssueState.allTime:
         return '';

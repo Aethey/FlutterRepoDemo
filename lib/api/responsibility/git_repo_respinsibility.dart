@@ -14,15 +14,21 @@ class GitRepoResponsibility {
   Future<List<IssueEntity>> fetchIssue(
       {required int page,
       required String sort,
+      required String state,
       required String direction,
+      required String labels,
       required String since}) async {
     Map<String, dynamic> params = Map();
     params['page'] = page;
     params['per_page'] = 30;
     params['sort'] = sort;
     params['direction'] = direction;
+    params['state'] = state;
     if (since != '') {
       params['since'] = since;
+    }
+    if(labels != ''){
+      params['labels'] = labels;
     }
 
     var response = await DioManager().get('/issues', params: params);

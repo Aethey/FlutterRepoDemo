@@ -1,15 +1,16 @@
 import 'package:flutter_git_repo_demo/api/responsibility/git_repo_respinsibility.dart';
 import 'package:flutter_git_repo_demo/states/freezed/all_issues_state.dart';
+import 'package:flutter_git_repo_demo/states/freezed/webview_issues_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final allIssuesProvider =
-    StateNotifierProvider<AllIssuesNotifier, AllIssuesState>((ref) {
-  return AllIssuesNotifier();
+final webViewIssuesProvider =
+    StateNotifierProvider<WebViewIssuesNotifier, WebViewIssuesState>((ref) {
+  return WebViewIssuesNotifier();
 });
 
 /// manage image list state
-class AllIssuesNotifier extends StateNotifier<AllIssuesState> {
-  AllIssuesNotifier() : super(AllIssuesState()) {
+class WebViewIssuesNotifier extends StateNotifier<WebViewIssuesState> {
+  WebViewIssuesNotifier() : super(WebViewIssuesState()) {
     _initList();
   }
 
@@ -25,7 +26,7 @@ class AllIssuesNotifier extends StateNotifier<AllIssuesState> {
     final direction = initDirection ?? state.direction;
     final _state = initState ?? state.state;
     final since = initSince ?? state.since;
-    final labels = initLabels ?? state.labels;
+    final labels = 'p: webview';
     final issues = await GitRepoResponsibility().fetchIssue(
         page: page,
         sort: sort,
@@ -85,7 +86,11 @@ class AllIssuesNotifier extends StateNotifier<AllIssuesState> {
   }
 
   Future<void> refresh(
-      {String? sort, String? direction, String? since, String? state,String? labels}) async {
+      {String? sort,
+      String? direction,
+      String? since,
+      String? state,
+      String? labels}) async {
     _initList(
         initPage: 1,
         initSort: sort,

@@ -1,31 +1,32 @@
 import 'package:flutter_git_repo_demo/api/responsibility/git_repo_respinsibility.dart';
 import 'package:flutter_git_repo_demo/states/freezed/all_issues_state.dart';
+import 'package:flutter_git_repo_demo/states/freezed/share_issues_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final allIssuesProvider =
-    StateNotifierProvider<AllIssuesNotifier, AllIssuesState>((ref) {
-  return AllIssuesNotifier();
+final shareIssuesProvider =
+StateNotifierProvider<ShareIssuesNotifier, ShareIssuesState>((ref) {
+  return ShareIssuesNotifier();
 });
 
 /// manage image list state
-class AllIssuesNotifier extends StateNotifier<AllIssuesState> {
-  AllIssuesNotifier() : super(AllIssuesState()) {
+class ShareIssuesNotifier extends StateNotifier<ShareIssuesState> {
+  ShareIssuesNotifier() : super(ShareIssuesState()) {
     _initList();
   }
 
   void _initList(
       {int? initPage,
-      String? initSort,
-      String? initDirection,
-      String? initState,
-      String? initLabels,
-      String? initSince}) async {
+        String? initSort,
+        String? initDirection,
+        String? initState,
+        String? initLabels,
+        String? initSince}) async {
     final page = initPage ?? state.page;
     final sort = initSort ?? state.sort;
     final direction = initDirection ?? state.direction;
     final _state = initState ?? state.state;
     final since = initSince ?? state.since;
-    final labels = initLabels ?? state.labels;
+    final labels = 'p: share';
     final issues = await GitRepoResponsibility().fetchIssue(
         page: page,
         sort: sort,
