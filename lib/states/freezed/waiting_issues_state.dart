@@ -12,7 +12,7 @@ class WaitingIssuesState with _$WaitingIssuesState{
     @Default('created') String sort,
     @Default('desc') String direction,
     @Default('') String since,
-    @Default('open') String state,
+    @Default('all') String state,
     @Default('') String labels,
     @Default(true) bool isLoading,
     @Default(false) bool isLoadMoreError,

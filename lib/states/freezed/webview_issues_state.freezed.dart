@@ -22,7 +22,7 @@ class _$WebViewIssuesStateTearOff {
       String sort = 'created',
       String direction = 'desc',
       String since = '',
-      String state = 'open',
+      String state = 'all',
       String labels = '',
       bool isLoading = true,
       bool isLoadMoreError = false,
@@ -261,7 +261,7 @@ class _$_WebViewIssuesState extends _WebViewIssuesState {
       this.sort = 'created',
       this.direction = 'desc',
       this.since = '',
-      this.state = 'open',
+      this.state = 'all',
       this.labels = '',
       this.isLoading = true,
       this.isLoadMoreError = false,
@@ -284,7 +284,7 @@ class _$_WebViewIssuesState extends _WebViewIssuesState {
   @JsonKey(defaultValue: '')
   @override
   final String since;
-  @JsonKey(defaultValue: 'open')
+  @JsonKey(defaultValue: 'all')
   @override
   final String state;
   @JsonKey(defaultValue: '')

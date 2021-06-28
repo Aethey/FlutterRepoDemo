@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_git_repo_demo/common/theme_data.dart';
 import 'package:flutter_git_repo_demo/model/issue_entity.dart';
+import 'package:intl/intl.dart';
 
 class IssueItemWidget extends StatelessWidget {
   const IssueItemWidget({Key? key, required this.issueEntity})
       : super(key: key);
 
   final IssueEntity issueEntity;
+
+  String getDateStr(String date){
+    DateTime dateTime = DateTime.parse(date);
+    String dateStr = DateFormat("yyyy-MM-dd hh:mm:ss").format(dateTime);
+    return dateStr;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +92,7 @@ class IssueItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${issueEntity.createdAt}',
+                    '${getDateStr(issueEntity.createdAt)}',
                     textAlign: TextAlign.start,
                   ),
                   Container(
@@ -110,4 +117,6 @@ class IssueItemWidget extends StatelessWidget {
       ),
     );
   }
+
+
 }

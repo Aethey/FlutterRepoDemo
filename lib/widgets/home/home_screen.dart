@@ -116,6 +116,7 @@ class HomeScreen extends StatelessWidget {
   void showModal(BuildContext context, int currentPage) {
     showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
         builder: (context) {
           return ModalList(
             currentPage: currentPage,
