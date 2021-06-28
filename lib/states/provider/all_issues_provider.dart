@@ -7,7 +7,7 @@ final allIssuesProvider =
   return AllIssuesNotifier();
 });
 
-/// manage image list state
+/// manage list state
 class AllIssuesNotifier extends StateNotifier<AllIssuesState> {
   AllIssuesNotifier() : super(AllIssuesState()) {
     _initList();

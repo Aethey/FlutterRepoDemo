@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// データが無い時表示します
 class MyNoneWidget extends StatelessWidget {
   const MyNoneWidget({Key? key}) : super(key: key);
 

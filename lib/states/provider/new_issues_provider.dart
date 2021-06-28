@@ -8,7 +8,7 @@ StateNotifierProvider<NewIssuesNotifier, NewIssuesState>((ref) {
   return NewIssuesNotifier();
 });
 
-/// manage image list state
+/// manage list state
 class NewIssuesNotifier extends StateNotifier<NewIssuesState> {
   NewIssuesNotifier() : super(NewIssuesState()) {
     _initList();

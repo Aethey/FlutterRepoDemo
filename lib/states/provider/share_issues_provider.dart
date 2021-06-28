@@ -8,7 +8,7 @@ StateNotifierProvider<ShareIssuesNotifier, ShareIssuesState>((ref) {
   return ShareIssuesNotifier();
 });
 
-/// manage image list state
+/// manage list state
 class ShareIssuesNotifier extends StateNotifier<ShareIssuesState> {
   ShareIssuesNotifier() : super(ShareIssuesState()) {
     _initList();

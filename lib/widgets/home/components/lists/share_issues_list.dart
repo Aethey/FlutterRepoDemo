@@ -6,6 +6,9 @@ import '../issue_item_widget.dart';
 import '../my_loading_widget.dart';
 import '../my_none_widget.dart';
 
+/// 対応のLabelのListView
+/// p: share
+
 class ShareIssuesList extends StatefulWidget {
   const ShareIssuesList({Key? key, required this.pageStorageKey})
       : super(key: key);

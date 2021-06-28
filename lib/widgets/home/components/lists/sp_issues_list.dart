@@ -6,6 +6,9 @@ import '../issue_item_widget.dart';
 import '../my_loading_widget.dart';
 import '../my_none_widget.dart';
 
+/// 対応のLabelのListView
+/// p: shared_preferences
+
 class SpIssuesList extends StatefulWidget {
   const SpIssuesList({Key? key, required this.pageStorageKey})
       : super(key: key);

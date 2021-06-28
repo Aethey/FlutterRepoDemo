@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Loading widget
 class MyLoadingWidget extends StatelessWidget {
   const MyLoadingWidget({Key? key}) : super(key: key);
 

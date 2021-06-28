@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'modal_list.dart';
 
+/// use this select issue label
 class TagItem extends StatefulWidget {
   const TagItem(
       {Key? key, required this.text, required this.index, required this.color})

@@ -8,7 +8,7 @@ StateNotifierProvider<WaitingIssuesNotifier, WaitingIssuesState>((ref) {
   return WaitingIssuesNotifier();
 });
 
-/// manage image list state
+/// manage list state
 class WaitingIssuesNotifier extends StateNotifier<WaitingIssuesState> {
   WaitingIssuesNotifier() : super(WaitingIssuesState()) {
     _initList();

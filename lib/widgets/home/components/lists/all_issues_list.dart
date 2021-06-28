@@ -6,6 +6,8 @@ import '../issue_item_widget.dart';
 import '../my_loading_widget.dart';
 import '../my_none_widget.dart';
 
+/// 対応のLabelのListView
+/// All
 class AllIssuesList extends StatefulWidget {
   const AllIssuesList({Key? key, required this.pageStorageKey})
       : super(key: key);

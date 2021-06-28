@@ -11,6 +11,8 @@ import 'dart:math';
 
 final issueLabelsProvider = StateProvider((ref) => []);
 
+/// issueのstate,sort...を選択。
+
 class ModalList extends StatelessWidget {
   const ModalList(
       {Key? key,

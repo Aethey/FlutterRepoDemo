@@ -8,7 +8,7 @@ final webViewIssuesProvider =
   return WebViewIssuesNotifier();
 });
 
-/// manage image list state
+/// manage list state
 class WebViewIssuesNotifier extends StateNotifier<WebViewIssuesState> {
   WebViewIssuesNotifier() : super(WebViewIssuesState()) {
     _initList();
